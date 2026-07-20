@@ -12,7 +12,11 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                echo "doing build stuff.."
+                git clone https://github.com/thiernomendes1/jenkins
+                cd jenkins/myapp
+                python3 -m venv venv
+                . venv/bin/activate
+                pip3 install -r requirements.txt
                 '''
             }
         }
@@ -20,7 +24,10 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff.."
+                cd jenkins/myapp
+                . venv/bin/activate
+                python3 hello.py
+                python3 hello.py --name=Brad
                 '''
             }
         }
