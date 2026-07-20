@@ -1,4 +1,4 @@
-FROM jenkins/inbound-agent:latest
+FROM jenkins/agent:latest
 
 USER root
 
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Fix python and pip aliases
-RUN ln -s /usr/bin/python3 /usr/bin/python && \
-    ln -s /usr/bin/pip3 /usr/bin/pip
+# RUN ln -s /usr/bin/python3 /usr/bin/python && \
+#    ln -s /usr/bin/pip3 /usr/bin/pip
 
 USER jenkins
